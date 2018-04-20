@@ -38,8 +38,8 @@ $('#form').submit(function(e){
   var volumePtoLY = "Percent to LY: " + convertedPercent + "%";
   var volume = "Volume: $" + volumeGlobal;
 
-  $('#data-final-1').append(volume);
-  $('#data-final-2').append(volumePtoLY);
+  $('#data-final-1').text(volume);
+  $('#data-final-2').text(volumePtoLY);
 
 
 });
@@ -55,8 +55,8 @@ $('#form').submit(function(e){
   var planPtoLY = "Percent to plan: " + convertedPercent + "%";
   var plan = "Plan: $" + planGlobal;
 
-  $('#data-final-3').append(plan);
-  $('#data-final-4').append(planPtoLY);
+  $('#data-final-3').text(plan);
+  $('#data-final-4').text(planPtoLY);
 
 });
 
@@ -67,12 +67,12 @@ $('#form').submit(function(e){
   var conversionGlobal = $('input#conversionSTR').val();
   var conversionLYGlobal = $('input#conversionLYSTR').val();
   var convertedPercent;
-  convertedPercent = Math.floor(((conversionGlobal / conversionLYGlobal) - 1) * 100);
+  convertedPercent = Math.floor(conversionGlobal - conversionLYGlobal);
   var conversionPtoLY = "Percent to LY: " + convertedPercent + "%";
   var conversion = "Conversion: " + conversionGlobal + "%";
 
-  $('#data-final-5').append(conversion);
-  $('#data-final-6').append(conversionPtoLY);
+  $('#data-final-5').text(conversion);
+  $('#data-final-6').text(conversionPtoLY);
 
 });
 
@@ -88,9 +88,9 @@ $('#form').submit(function(e){
   var credit = "Credit: " + creditGlobal
 
 
-  $('#data-final-7').append(ads);
-  $('#data-final-8').append(next);
-  $('#data-final-9').append(credit);
+  $('#data-final-7').text(ads);
+  $('#data-final-8').text(next);
+  $('#data-final-9').text(credit);
 
 });
 
@@ -109,7 +109,7 @@ $('#form').submit(function(e){
   var nextGlobal = $('input#nextSTR').val();
   var creditGlobal = $('input#creditSTR').val();
 
-$('#email-final').append('Hello Shane, ')
+$('#email-final').text('Hello Shane, ')
 
 // plan and LY sentence
 if (volumeGlobal >= planGlobal && volumeGlobal >= volumeLYGlobal) {
