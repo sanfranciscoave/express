@@ -35,16 +35,18 @@ $('#form').submit(function(e){
   var volumeLYGlobal = $('input#volumeLYSTR').val();
   var convertedPercent;
   convertedPercent = Math.floor(((volumeGlobal / volumeLYGlobal) - 1) * 100);
-  var volumePtoLY = "Percent to LY: " + convertedPercent + "%";
+  var volumePtoLY = "% to LY: " + convertedPercent + "%";
   var volume = "Volume: $" + volumeGlobal;
+  var volumeLY = "LY $" + volumeLYGlobal;
 
   $('#data-final-1').text(volume);
-  $('#data-final-2').text(volumePtoLY);
+  $('#data-final-4').text(volumeLY);
+  $('#data-final-5').text(volumePtoLY);
 
 
 });
 
-// plan and percent to plan function
+// plan and vpercent to plan function
 $('#form').submit(function(e){
   e.preventDefault();
 
@@ -52,11 +54,11 @@ $('#form').submit(function(e){
   var planGlobal = $('input#planSTR').val();
   var convertedPercent;
   convertedPercent = Math.floor(((volumeGlobal / planGlobal) - 1) * 100);
-  var planPtoLY = "Percent to plan: " + convertedPercent + "%";
+  var volumePtoPlan = "% to plan: " + convertedPercent + "%";
   var plan = "Plan: $" + planGlobal;
 
-  $('#data-final-3').text(plan);
-  $('#data-final-4').text(planPtoLY);
+  $('#data-final-2').text(plan);
+  $('#data-final-3').text(volumePtoPlan);
 
 });
 
@@ -68,11 +70,11 @@ $('#form').submit(function(e){
   var conversionLYGlobal = $('input#conversionLYSTR').val();
   var convertedPercent;
   convertedPercent = Math.floor(conversionGlobal - conversionLYGlobal);
-  var conversionPtoLY = "Percent to LY: " + convertedPercent + "%";
+  var conversionPtoLY = "% to LY Conversion: " + convertedPercent + "%";
   var conversion = "Conversion: " + conversionGlobal + "%";
 
-  $('#data-final-5').text(conversion);
-  $('#data-final-6').text(conversionPtoLY);
+  $('#data-final-6').text(conversion);
+  $('#data-final-7').text(conversionPtoLY);
 
 });
 
@@ -88,9 +90,9 @@ $('#form').submit(function(e){
   var credit = "Credit: " + creditGlobal
 
 
-  $('#data-final-7').text(ads);
-  $('#data-final-8').text(next);
-  $('#data-final-9').text(credit);
+  $('#data-final-8').text(ads);
+  $('#data-final-9').text(next);
+  $('#data-final-10').text(credit);
 
 });
 
@@ -180,7 +182,7 @@ if (volumeGlobal >= planGlobal && volumeGlobal >= volumeLYGlobal) {
   $('#email-final').append('Overall, it was a good day.');
 }
 
-$('#email-final-signature').append('- Francisco')
+$('#email-final-signature').text('- Francisco')
 
 });
 
