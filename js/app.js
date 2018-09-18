@@ -34,7 +34,7 @@ $('#form').submit(function(e){
   var volumeGlobal = $('input#volumeSTR').val();
   var volumeLYGlobal = $('input#volumeLYSTR').val();
   var convertedPercent;
-  convertedPercent = Math.floor(((volumeGlobal / volumeLYGlobal) - 1) * 100);
+  convertedPercent = Math.round((((volumeGlobal / volumeLYGlobal) - 1) * 100)*100)/100;
   var volumePtoLY = "% to LY: " + convertedPercent + "%";
   var volume = "Volume: $" + volumeGlobal;
   var volumeLY = "LY $" + volumeLYGlobal;
@@ -53,7 +53,7 @@ $('#form').submit(function(e){
   var volumeGlobal = $('input#volumeSTR').val();
   var planGlobal = $('input#planSTR').val();
   var convertedPercent;
-  convertedPercent = Math.floor(((volumeGlobal / planGlobal) - 1) * 100);
+  convertedPercent = Math.round((((volumeGlobal / planGlobal) - 1) * 100)*100)/100;
   var volumePtoPlan = "% to plan: " + convertedPercent + "%";
   var plan = "Plan: $" + planGlobal;
 
@@ -69,7 +69,7 @@ $('#form').submit(function(e){
   var conversionGlobal = $('input#conversionSTR').val();
   var conversionLYGlobal = $('input#conversionLYSTR').val();
   var convertedPercent;
-  convertedPercent = Math.floor(conversionGlobal - conversionLYGlobal);
+  convertedPercent = Math.round((conversionGlobal - conversionLYGlobal))*100/100;
   var conversionPtoLY = "% to LY Conversion: " + convertedPercent + "%";
   var conversion = "Conversion: " + conversionGlobal + "%";
 
@@ -99,91 +99,6 @@ $('#form').submit(function(e){
 
 // ********** email response **********
 
-$('#form').submit(function(e){
-  e.preventDefault();
 
-  var volumeGlobal = $('input#volumeSTR').val();
-  var volumeLYGlobal = $('input#volumeLYSTR').val();
-  var planGlobal = $('input#planSTR').val();
-  var conversionGlobal = $('input#conversionSTR').val();
-  var conversionLYGlobal = $('input#conversionLYSTR').val();
-  var adsGlobal = $('input#adsSTR').val();
-  var nextGlobal = $('input#nextSTR').val();
-  var creditGlobal = $('input#creditSTR').val();
-
-$('#email-final').text('Hello Shane, ')
-
-// plan and LY sentence
-if (volumeGlobal >= planGlobal && volumeGlobal >= volumeLYGlobal) {
-  $('#email-final').append('we made plan and LY. ');
-} else if (volumeGlobal >= planGlobal && volumeGlobal < volumeLYGlobal) {
-  $('#email-final').append('we made plan and we missed LY. ');
-} else if (volumeGlobal < planGlobal && volumeGlobal <= volumeLYGlobal) {
-  $('#email-final').append('we missed plan and LY. ');
-} else if (volumeGlobal < planGlobal && volumeGlobal > volumeLYGlobal){
-  $('#email-final').append('we missed plan and we made LY. ');
-}
-
-
-// Conversion, loyalty, and ADS
-
-// opportunities
-if (conversionGlobal < 18 && adsGlobal < 70 && nextGlobal < 5 && creditGlobal < 1) {
-    $('#email-final').append('Our opportunity was in our conversion, loyalty, and ADS. ');
-} else if (adsGlobal < 70 && nextGlobal < 5 && creditGlobal < 1) {
-    $('#email-final').append('Our opportunity was in our loyalty and ADS. ');
-} else if (conversionGlobal < 18 && nextGlobal < 5 && creditGlobal < 1) {
-    $('#email-final').append('Our opportunity was in our conversion and loyalty. ');
-} else if (conversionGlobal < 18 && adsGlobal < 70) {
-    $('#email-final').append('Our opportunity was in our conversion and ADS. ');
-} else if (conversionGlobal < 18) {
-    $('#email-final').append('Our opportunity was in our conversion. ');
-} else if (nextGlobal < 5 && creditGlobal < 1) {
-    $('#email-final').append('Our opportunity was in our loyalty. ');
-} else if (adsGlobal < 70) {
-    $('#email-final').append('Our opportunity was in our ADS. ');
-}
-
-// strengths
-if (conversionGlobal >= 18 && adsGlobal >= 70 && nextGlobal >= 5 && creditGlobal >= 1) {
-    $('#email-final').append('Our strengths for the day were our conversion, loyalty, and ADS. ');
-} else if (adsGlobal >= 70 && nextGlobal >= 5 && creditGlobal >= 1) {
-    $('#email-final').append('Our strengths for the day were our loyalty and ADS. ');
-} else if (conversionGlobal >= 18 && nextGlobal >= 5 && creditGlobal >= 1) {
-    $('#email-final').append('Our strengths for the day were our conversion and loyalty. ');
-} else if (conversionGlobal >= 18 && adsGlobal >= 70) {
-    $('#email-final').append('Our strengths for the day were our conversion and ADS. ');
-} else if (conversionGlobal >= 18) {
-    $('#email-final').append('Our strength was in our conversion. ');
-} else if (nextGlobal >= 5 && creditGlobal >= 1) {
-    $('#email-final').append('Our strength was in our loyalty. ');
-} else if (adsGlobal >= 70) {
-    $('#email-final').append('Our strength was in our ADS. ');
-}
-
-// opportunity comments
-if (conversionGlobal < 18 && adsGlobal < 70 && nextGlobal < 5 && creditGlobal < 1) {
-    $('#email-final').append('We need to make sure that we are engaging with every customer that comes in the store as well as building complete outfits for our guy and girl. We also need to be informing customers about the benefits of our NEXT program and credit card. ');
-} else if (adsGlobal < 70 && nextGlobal < 5 && creditGlobal < 1) {
-    $('#email-final').append('We need to make sure that we are always informing customers about the benefits of our NEXT program and credit card. We also need to focus on building complete outfits for our guy and girl. ');
-} else if (conversionGlobal < 18 && nextGlobal < 5 && creditGlobal < 1) {
-    $('#email-final').append('We need to make sure that we are engaging with every customer that comes in the store and also informing purchasing customers about the benefits of our NEXT program and credit card. ');
-} else if (conversionGlobal < 18 && adsGlobal < 70) {
-    $('#email-final').append('We need to make sure that we are engaging with every customer that comes in the store and also focus on building complete outfits for our guy and girl. ');
-} else if (conversionGlobal < 18) {
-    $('#email-final').append('We need to make sure that we are engaging with every customer that comes in the store to drive up our conversion. ');
-} else if (nextGlobal < 5 && creditGlobal < 1) {
-    $('#email-final').append('We need to make sure that we are always informing customers about the benefits of our NEXT program and credit card in order to drive up our loyalty. ');
-} else if (adsGlobal < 70) {
-    $('#email-final').append('We need to focus on building complete outfits for our guy and girl in order to drive up our ADS. ');
-}
-
-if (volumeGlobal >= planGlobal && volumeGlobal >= volumeLYGlobal) {
-  $('#email-final').append('Overall, it was a good day.');
-}
-
-$('#email-final-signature').text('- Francisco')
-
-});
 
 });
