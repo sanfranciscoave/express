@@ -97,8 +97,4 @@ $('#form').submit(function(e){
 });
 
 
-// ********** email response **********
-
-
-
 });
