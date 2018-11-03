@@ -44,9 +44,9 @@ function calcPercentToLYConversion(conversion, conversionLY){
 }
 
 function main(){
-  var PercentToPlan = calcPercentToPlan(getData()[0], getData()[2]);
-  var PercentToLY = calcPercentToLY(getData()[0], getData()[1]);
-  var PercentToLYConversion = calcPercentToLYConversion(getData()[3], getData()[4]);
+  var percentToPlan = calcPercentToPlan(getData()[0], getData()[2]);
+  var percentToLY = calcPercentToLY(getData()[0], getData()[1]);
+  var percentToLYConversion = calcPercentToLYConversion(getData()[3], getData()[4]);
 
   // *****print values to DOM*****
   // print volume
