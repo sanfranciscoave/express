@@ -9,7 +9,7 @@ $(document).ready(function(){
    $(this).css('background', 'white');
  })
 
-});
+
 
 
 // gather all input data
@@ -24,6 +24,8 @@ function getData(){
   var credit = $('input#creditSTR').val();
   return [volume, volumeLY, plan, conversion, conversionLY, ads, next, credit];
 }
+
+
 
 // calculate % to plan
 function calcPercentToPlan(volume, plan){
@@ -50,31 +52,33 @@ function main(){
 
   // *****print values to DOM*****
   // print volume
-  $('#data-final-1').text(getData()[0]);
+  $('#data-final-1').text("Volume: $" + getData()[0]);
   // print plan
-  $('#data-final-2').text(getData()[2]);
+  $('#data-final-2').text("Plan: $" + getData()[2]);
   // print percent to plan
-  $('#data-final-3').text(percentToPlan);
+  $('#data-final-3').text("% to plan: " + percentToPlan + "%");
   // print volume LY
-  $('#data-final-4').text(getData()[1]);
+  $('#data-final-4').text("Volume LY: $" + getData()[1]);
   // print percent to LY
-  $('#data-final-5').text(percentToLY);
+  $('#data-final-5').text("% to LY: " + percentToLY + "%");
   // print conversion
-  $('#data-final-6').text(getData()[3]);
+  $('#data-final-6').text("Conversin: " + getData()[3] + "%");
   // print conversion percent to LY
-  $('#data-final-7').text(percentToLYConversion);
+  $('#data-final-7').text("Conversion % to LY: " + percentToLYConversion + "%");
   // print ads
-  $('#data-final-8').text(getData()[5]);
+  $('#data-final-8').text("ADS: $" + getData()[5]);
   // print next
-  $('#data-final-9').text(getData()[6]);
+  $('#data-final-9').text("NEXT: " + getData()[6]);
   // print credit
-  $('#data-final-10').text(getData()[7]);
+  $('#data-final-10').text("Credit: " + getData()[7]);
 
 }
+
 
 $('#form').submit(function(e){
   e.preventDefault();
   main()
 });
 
-main()
+
+});
