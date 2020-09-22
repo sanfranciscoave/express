@@ -62,7 +62,7 @@ function main(){
   // print percent to LY
   $('#data-final-5').text("% to LY: " + percentToLY + "%");
   // print conversion
-  $('#data-final-6').text("Conversin: " + getData()[3] + "%");
+  $('#data-final-6').text("Conversion: " + getData()[3] + "%");
   // print conversion percent to LY
   $('#data-final-7').text("Conversion % to LY: " + percentToLYConversion + "%");
   // print ads
